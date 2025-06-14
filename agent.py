@@ -1,5 +1,5 @@
 from google.adk.agents import Agent, LlmAgent
-from .tool_lib import calendar, weather
+from .tools import calendar, weather_time
 
 
 calendar_agent = Agent(
@@ -15,7 +15,7 @@ weather_time_agent = Agent(
     model="gemini-2.0-flash",
     # description="Agent to answer questions about the time and weather in a city.",
     description="You are a helpful agent who can answer user questions about the time and weather in a city. Your ONLY task is to answer questions about the time and weather in a city. Do not engage in any other conversation or tasks.",
-    tools=[weather.get_weather, weather.get_current_time],
+    tools=[weather_time.get_weather, weather_time.get_current_time],
 )
 
 root_agent = LlmAgent(
