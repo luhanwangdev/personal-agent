@@ -49,8 +49,49 @@ def get_calendar_events(date: str):
         }
 
 
-def create_calendar_event(title: str, start_time: str):
-    return {
-        "status": "success",
-        "report": f"Event '{title}' created for {start_time}.",
-    }
+def create_calendar_event(title: str, start_time: str, duration_minutes: int = 60, description: str = ""):
+    try:
+        taipei_tz = timezone(timedelta(hours=8))
+        
+        try:
+            start_dt = datetime.datetime.strptime(start_time, "%Y-%m-%d %H:%M")
+            start_dt = start_dt.replace(tzinfo=taipei_tz)
+            
+        except ValueError:
+            return {
+                "status": "error",
+                "error_message": "Invalid start_time format. Use 'YYYY-MM-DD HH:MM' or ISO format."
+            }
+        
+        end_dt = start_dt + timedelta(minutes=duration_minutes)
+        
+        event = {
+            'summary': title,
+            'description': description,
+            'start': {
+                'dateTime': start_dt.isoformat(),
+                'timeZone': 'Asia/Taipei',
+            },
+            'end': {
+                'dateTime': end_dt.isoformat(),
+                'timeZone': 'Asia/Taipei',
+            },
+        }
+        
+        created_event = calendar_service.service.events().insert(
+            calendarId='primary', 
+            body=event
+        ).execute()
+        
+        return {
+            "status": "success",
+            "report": f"Event '{title}' created successfully from {start_dt.strftime('%Y-%m-%d %H:%M')} to {end_dt.strftime('%H:%M')} (Taipei time).",
+            "event_id": created_event.get('id'),
+            "event_link": created_event.get('htmlLink')
+        }
+    
+    except Exception as e:
+        return {
+            "status": "error",
+            "error_message": f"Error creating calendar event: {str(e)}",
+        }

@@ -45,8 +45,8 @@ The system uses Google's ADK framework with Gemini 2.0 Flash model. The root age
 **Calendar Operations:**
 
 - View calendar events for today or specific dates
+- Create new calendar events with customizable duration and description
 - Real-time integration with Google Calendar API
-- Create new calendar events (in development)
 
 **Weather & Time Operations:**
 
@@ -57,13 +57,14 @@ The system uses Google's ADK framework with Gemini 2.0 Flash model. The root age
 
 - "What's on my calendar today?"
 - "Show me my calendar for 2024-12-25"
-- "Schedule a meeting with John at 2 PM"
+- "Schedule a meeting with John at 2024-12-15 14:30"
+- "Create a 90-minute presentation event on 2024-12-20 10:00"
 - "What's the weather in New York?"
 - "What time is it in New York?"
 
 ## Current Limitations
 
-- **Calendar**: Event creation is not yet implemented (read-only functionality)
+- **Calendar**: Uses Taipei timezone (Asia/Taipei) for all events
 - **Weather**: Weather and time information only available for New York
 - **Authentication**: Manual OAuth flow required for initial setup
 
