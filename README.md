@@ -24,12 +24,14 @@ Root Agent (Coordinator)
 ## Setup
 
 1. Create and activate a virtual environment:
+
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
 2. Install dependencies:
+
 ```bash
 pip install -r requirements.txt
 ```
@@ -41,25 +43,29 @@ The system uses Google's ADK framework with Gemini 2.0 Flash model. The root age
 ### Supported Operations
 
 **Calendar Operations:**
-- View today's calendar events
-- Create new calendar events
+
+- View calendar events for today or specific dates
+- Real-time integration with Google Calendar API
+- Create new calendar events (in development)
 
 **Weather & Time Operations:**
+
 - Get weather information for supported cities
 - Get current time for supported cities
 
 ### Example Interactions
 
 - "What's on my calendar today?"
+- "Show me my calendar for 2024-12-25"
 - "Schedule a meeting with John at 2 PM"
 - "What's the weather in New York?"
 - "What time is it in New York?"
 
 ## Current Limitations
 
-- Calendar data is currently mocked (only supports "today" queries)
-- Weather and time information only available for New York
-- No persistent storage for calendar events
+- **Calendar**: Event creation is not yet implemented (read-only functionality)
+- **Weather**: Weather and time information only available for New York
+- **Authentication**: Manual OAuth flow required for initial setup
 
 ## Project Structure
 
