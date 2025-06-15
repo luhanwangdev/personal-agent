@@ -36,9 +36,35 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
+3. Set up Google ADK:
+
+Navigate to the parent directory and run:
+```bash
+cd ..
+adk web
+```
+
+This will open the ADK web interface where you can:
+- Configure your agents and tools
+- Test agent interactions
+- Monitor agent performance
+- Deploy your multi-agent system
+
+4. Configure Google Calendar API (optional):
+   - Place your `credentials.json` file in the project root
+   - The OAuth flow will run automatically on first calendar access
+
 ## Usage
 
-The system uses Google's ADK framework with Gemini 2.0 Flash model. The root agent automatically routes requests to appropriate specialized agents based on the query type.
+The system uses Google's ADK framework with Gemini 2.0 Flash model. 
+
+1. Start the ADK web interface from the parent directory:
+```bash
+cd ..
+adk web
+```
+
+2. The root agent automatically routes requests to appropriate specialized agents based on the query type.
 
 ### Supported Operations
 
