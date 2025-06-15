@@ -7,3 +7,5 @@ env/
 venv/
 .env
 .venv
+credentials.json
+token.json

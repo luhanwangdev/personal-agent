@@ -65,9 +65,13 @@ The system uses Google's ADK framework with Gemini 2.0 Flash model. The root age
 
 ```
 ├── agent.py              # Main agent definitions
-├── tool_lib/             # Tool implementations
+├── services/             # Service implementations
+│   └── calendar.py       # Google Calendar integration
+├── tools/                # Tool implementations
 │   ├── calendar.py       # Calendar management tools
-│   └── weather.py        # Weather and time tools
+│   └── weather_time.py   # Weather and time tools
+├── credentials.json      # Google API credentials
+├── token.json           # OAuth token storage
 ├── requirements.txt      # Python dependencies
 └── __init__.py          # Package initialization
 ```
